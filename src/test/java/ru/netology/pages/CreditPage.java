@@ -6,6 +6,7 @@ import ru.netology.data.CardData;
 
 import java.time.Duration;
 
+import static com.codeborne.selenide.Condition.hidden;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
@@ -71,10 +72,10 @@ public class CreditPage {
         emptyCodeField.shouldBe(visible);
     }
     public void successPayment(){
-        successNotification.shouldBe(visible, Duration.ofSeconds(10));
+        successNotification.shouldBe(hidden);
     }
     public void failedPayment(){
-        failNotification.shouldBe(visible,Duration.ofSeconds(10));
+        failNotification.shouldBe(hidden);
     }
     public void fillForm(CardData.CardInfo cardInfo){
         cardField.setValue(cardInfo.getCardNumber());

@@ -16,19 +16,17 @@ public class CreditCardTest {
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
-    @AfterAll
-    static void tearDownAll() {
-        SelenideLogger.removeListener("allure");
-    }
 
     @BeforeEach
     void setup() {
         open("http://localhost:8080");
     }
-    @AfterEach
-    void clearDataBase() {
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
         SQLData.cleanDataBase();
     }
+
     @Test
     @DisplayName("Valid data in all fields")
     public void validDataAllFieldsTest() {
@@ -36,8 +34,8 @@ public class CreditCardTest {
         var creditPage = mainPage.chooseBuyInCredit();
         creditPage.fillForm(CardData.getValidCardInfo());
         creditPage.successPayment();
-        var paymentStatus = SQLData.getStatusDebitCard();
-        assertEquals("APPROVED", paymentStatus);
+        String actual = SQLData.getStatusCreditCard();
+        assertEquals("APPROVED", actual);
     }
     @Test
     @DisplayName("Declined card number")
@@ -46,8 +44,8 @@ public class CreditCardTest {
         var creditPage = mainPage.chooseBuyInCredit();
         creditPage.fillForm(CardData.getDeclinedCardNumber());
         creditPage.failedPayment();
-        var paymentStatus = SQLData.getStatusDebitCard();
-        assertEquals("DECLINED", paymentStatus);
+        String actual = SQLData.getStatusCreditCard();
+        assertEquals("DECLINED", actual);
 
     }
 }

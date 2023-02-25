@@ -29,7 +29,7 @@ public class SQLData {
         try (var conn = getConn()) {
             var status = runner.query(conn, dataSQL, new ScalarHandler<String>());
             return status;
-        } catch (SQLException exception) {
+            } catch (SQLException exception) {
             exception.printStackTrace();
         }
         return null;
@@ -39,7 +39,7 @@ public class SQLData {
         var dataSQL = "SELECT status FROM credit_request_entity ORDER BY created DESC LIMIT 1";
         try (var conn = getConn()) {
             var status = runner.query(conn, dataSQL, new ScalarHandler<String>());
-            return new String(status);
+            return status;
         } catch (SQLException exception) {
             exception.printStackTrace();
         }

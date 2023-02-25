@@ -23,18 +23,20 @@ repositories {
 }
 
 dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
-    testImplementation 'com.codeborne:selenide:5.19.0'
+    testImplementation 'mysql:mysql-connector-java:8.0.22'
     testImplementation 'com.github.javafaker:javafaker:1.0.2'
-    testImplementation 'io.qameta.allure:allure-selenide:2.16.1'
-    testImplementation 'mysql:mysql-connector-java:8.0.29'
-    testImplementation 'org.postgresql:postgresql:42.3.6'
     testImplementation 'commons-dbutils:commons-dbutils:1.7'
-
+    testImplementation 'com.codeborne:selenide:6.6.6'
+    testImplementation 'io.qameta.allure:allure-selenide:2.16.1'
+    implementation 'org.postgresql:postgresql:42.3.1'
 }
 
+
+
 test {
-    useJUnitPlatform()
     useJUnitPlatform()
     systemProperty 'selenide.headless', System.getProperty('selenide.headless')
     systemProperty 'db.url', System.getProperty('db.url')

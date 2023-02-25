@@ -18,18 +18,15 @@ public class DebitCardTest {
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
-    @AfterAll
-    static void tearDownAll() {
-        SelenideLogger.removeListener("allure");
-    }
+
     @BeforeEach
     void setup() {
         open("http://localhost:8080");
     }
-    @BeforeEach
-    void clearDataBase() {
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
         SQLData.cleanDataBase();
-
     }
 
     @Test
@@ -38,8 +35,9 @@ public class DebitCardTest {
         var mainPage = new MainPage();
         var debitPage = mainPage.chooseDebitPayment();
         debitPage.fillForm(CardData.getValidCardInfo());
-        //debitPage.successPayment();
-        assertEquals("APPROVED",SQLData.getStatusDebitCard());
+        debitPage.successPayment();
+        String actual = SQLData.getStatusDebitCard();
+        assertEquals("APPROVED",actual);
     }
 
     @Test
@@ -49,8 +47,8 @@ public class DebitCardTest {
         var debitPage = mainPage.chooseDebitPayment();
         debitPage.fillForm(CardData.getDeclinedCardNumber());
         debitPage.failedPayment();
-        var paymentStatus = SQLData.getStatusDebitCard();
-        assertEquals("DECLINED", paymentStatus);
+        var actual = SQLData.getStatusDebitCard();
+        assertEquals("DECLINED", actual);
 
     }
 }

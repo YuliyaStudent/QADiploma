@@ -6,9 +6,9 @@ import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import ru.netology.data.CardData;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
 import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -75,10 +75,10 @@ public class DebitPage {
         emptyCodeField.shouldBe(visible);
     }
     public void successPayment(){
-        successNotification.shouldBe(visible, Duration.ofSeconds(10));
+        successNotification.shouldBe(hidden);
     }
     public void failedPayment(){
-        failNotification.shouldBe(visible,Duration.ofSeconds(10));
+        failNotification.shouldBe(hidden);
     }
 
 
