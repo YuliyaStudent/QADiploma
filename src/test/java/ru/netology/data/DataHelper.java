@@ -41,6 +41,10 @@ public class DataHelper {
         return "";
     }
 
+    public static String zeroCardNumber() {
+        return "0000 0000 0000 0000 0000";
+    }
+
     public static String getValidMonth() {
         return LocalDate.now().format(DateTimeFormatter.ofPattern("MM"));
     }
@@ -66,6 +70,10 @@ public class DataHelper {
     }
 
     public static String emptyMonthField() {
+        return "";
+    }
+
+    public static String emptyYearField() {
         return "";
     }
 
@@ -143,6 +151,10 @@ public class DataHelper {
 
     public static String symbolsInCode() {
         return "...";
+    }
+
+    public static String zeroInCode() {
+        return "000";
     }
 
     public static String minusOneInCardNumber() {

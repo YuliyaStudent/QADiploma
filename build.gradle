@@ -23,15 +23,16 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
-    testImplementation 'mysql:mysql-connector-java:8.0.22'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+    testImplementation 'mysql:mysql-connector-java:8.0.29'
     testImplementation 'com.github.javafaker:javafaker:1.0.2'
+    testImplementation 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
+    testImplementation 'com.codeborne:selenide:6.6.3'
     testImplementation 'commons-dbutils:commons-dbutils:1.7'
-    testImplementation 'com.codeborne:selenide:6.6.6'
-    testImplementation 'io.qameta.allure:allure-selenide:2.16.1'
-    implementation 'org.postgresql:postgresql:42.3.1'
+    testImplementation 'io.qameta.allure:allure-selenide:2.18.1'
+    testImplementation 'org.postgresql:postgresql:42.3.6'
 }
 
 
@@ -39,7 +40,8 @@ dependencies {
 test {
     useJUnitPlatform()
     systemProperty 'selenide.headless', System.getProperty('selenide.headless')
-    systemProperty 'db.url', System.getProperty('db.url')
+    systemProperty 'base.uri', System.getProperty('base.uri', 'http://localhost:8080')
+    systemProperty 'db.url', System.getProperty('db.url', 'jdbc:mysql://localhost:3306/app')
     systemProperty 'db.user', System.getProperty('db.user', 'app')
     systemProperty 'db.password', System.getProperty('db.password', 'pass')
 }

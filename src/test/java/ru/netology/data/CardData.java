@@ -69,6 +69,15 @@ public class CardData {
                 DataHelper.getValidCode());
     }
 
+    public static CardInfo getZeroInCardNumber() {
+        return new CardInfo(DataHelper.zeroCardNumber(),
+                DataHelper.getValidMonth(),
+                DataHelper.getValidYear(),
+                DataHelper.getValidOwner(),
+                DataHelper.getValidCode());
+
+    }
+
     public static CardInfo getLatinLettersInMonth() {
         return new CardInfo(DataHelper.getApprovedCardNumber(),
                 DataHelper.latinLettersInMonth(),
@@ -121,6 +130,14 @@ public class CardData {
         return new CardInfo(DataHelper.getApprovedCardNumber(),
                 DataHelper.getValidMonth(),
                 DataHelper.latinLettersInYear(),
+                DataHelper.getValidOwner(),
+                DataHelper.getValidCode());
+    }
+
+    public static CardInfo getEmptyYearField() {
+        return new CardInfo(DataHelper.getApprovedCardNumber(),
+                DataHelper.getValidMonth(),
+                DataHelper.emptyYearField(),
                 DataHelper.getValidOwner(),
                 DataHelper.getValidCode());
     }
@@ -244,6 +261,15 @@ public class CardData {
                 DataHelper.getValidOwner(),
                 DataHelper.symbolsInCode());
     }
+
+    public static CardInfo getZeroInCVCField() {
+        return new CardInfo(DataHelper.getApprovedCardNumber(),
+                DataHelper.getValidMonth(),
+                DataHelper.getValidYear(),
+                DataHelper.getValidOwner(),
+                DataHelper.zeroInCode());
+    }
+
 
     public static CardInfo getMinusOneInCardNumber() {
         return new CardInfo(DataHelper.minusOneInCardNumber(),
