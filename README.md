@@ -12,7 +12,7 @@
 
 3.Запустить Docker Desktop
 
-4.в терминале 1 IntelliJ IDEA ввести команду: docker-compose up
+4.в терминале 1 IntelliJ IDEA ввести команду: `docker-compose up`
 
 #### Подключение SUT к MySQL:
 1. открыть терминал 2 в IntelliJ IDEA и ввести команду:  `java "-Dspring.datasource.url=jdbc:mysql://localhost:3306/app" -jar artifacts/aqa-shop.jar`
